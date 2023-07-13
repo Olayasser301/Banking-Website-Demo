@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .topnav {
+             background-color: #043c3c;
+             overflow: hidden;
+             font-family: 'Times New Roman', Times,  serif;
+             color: white;
+             font-size: xx-large;
+        }
+        body {
+        background-color: #0a0000be; /*change to preferred color code*/
+      }
+        table{
+            position: sticky;
+            align-self: center;
+            left:0;
+            top:20px;
+            color: white;
+            width: 500px;
+            border-color: white;
+            border: 1px solid white;
+            border-collapse: collapse;
+            margin-left: 50px; 
+            margin-right: auto;
+            float: left;
+            font-size: large;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        table,th,td{
+          border:1px solid white;
+        }
+        #card,#ap,#apply {
+            position: static;
+            visibility: hidden;
+            display: none;
+        }
+        #home {
+            margin-left: auto; 
+            margin-right: 40px;
+            float: right;
+        }
+        #Rbtn,#home,#send{
+          background-color: #79b088; 
+            border: 1px solid black; 
+            color: black; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            font-size: larger;
+            font-family: 'Times New Roman', Times,  serif;
+        }
+        #response {
+          margin-left: 30px;
+          margin-right: auto;
+          float: left;
+          font-family: 'Times New Roman', Times, serif;
+          font-size: large;
+          bottom: 120px;
+          position: absolute;
+          color: white;
+        }
+        textarea {
+            resize: none;
+            border: 1px solid #043c3c;
+            background-color: #ffffff;
+        }
+        #Rbtn,#desc,#nsend {
+            margin-left: 50px; 
+            margin-right: auto;
+            float: left;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: large;
+        }
+        button#Rbtn:hover{
+          background-color: #86c697;
+        }
+        #home:hover{
+            background-color: #86c697;
+        }
+        #send:hover{
+            background-color: #86c697;
+        }
+        #nsend {
+            position: absolute;
+            left: 650px;
+            bottom: 350px;
+        }
+        #send {
+            position: absolute;
+            left: 700px;
+            bottom: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <h1 align="center"> GUC BANK</h1>
+      </div> <br/>
+      <table>
+        <tr>
+          <th>Report issued No.</th>  
+          <th>report description</th>
+          <th>report type</th>
+          <th>date</th>
+        </tr>
+        <tr>
+          <td>4302</td>
+          <td>How do i connect my bank account to the website?</td>
+          <td>FAQ new question</td>
+          <td>29/12/2023</td>
+        </tr>
+        <tr>
+          <td>14588</td>
+          <td>credit card went missing on the 27th of june</td>
+          <td>credit card theft</td>
+          <td>29/6/2023</td>
+        </tr>
+      </table> <br> <br> <br> <br> <br> <br> <br> <br>
+      <!-- <input type="radio" id="theft" name="type" value="theft">
+    <label for="theft">send it to the banker page</label><br>
+    <input type="radio" id="technical" name="type" value="technical">
+    <label for="technical">send to the IT staff</label><br> -->
+    <!-- <textarea ID="card" runat="server">please enter the credit card number</textarea><br/> -->
+    <textarea ID="desc" runat="server" >reported issue number</textarea> <br/> <br> <br>
+    <textarea ID="nsend" runat="server" >notification description</textarea>
+    <button ID="send">send notification</button>
+    <button ID="Rbtn">resolve</button>
+    <button ID="home">Home</button><br>
+    <label ID="response"></label>
+</body>
+<script>
+    const Rbtn = document.getElementById("Rbtn");
+    const hbtn = document.getElementById("home");
+    const desc = document.getElementById("desc");
+    const resp = document.getElementById("response");
+    const nsend = document.getElementById("nsend");
+    const s = document.getElementById("send");
+    Rbtn.addEventListener("click",function(e){
+    if(desc.value == '' || desc.value == 'reported issue number'){
+        resp.textContent="please enter the Number of the issue";
+    }
+    else {
+        resp.textContent="Report Handled Successfully";
+    }
+    })
+    s.addEventListener("click",function(e){
+    if(nsend.value == '' || nsend.value == 'notification description'){
+        resp.textContent="please enter a description of the notification";
+    }
+    else {
+        resp.textContent="notification send Successfully";
+    }
+    })
+    desc.addEventListener("click",function(e){
+        desc.textContent="";
+    })
+    nsend.addEventListener("click",function(e){
+        nsend.textContent="";
+    })
+    hbtn.addEventListener("click",function(e){
+    window.location.replace("BankerHome.html");
+    })
+</script>
+</html>

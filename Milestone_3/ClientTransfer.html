@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: aliceblue;
+        }
+        #home {
+            margin-left: auto; 
+            margin-right: 30px;
+            float: right;
+        }
+        .topnav {
+             background-color: #043c3c;
+             overflow: hidden;
+             font-family: 'Times New Roman', Times,  serif;
+             color: white;
+             font-size: xx-large;
+        }
+        #reponse {
+            margin-bottom: 10;
+            margin-left: 0;
+        }
+        #acc {
+            margin-left: auto; 
+            margin-right: 30px;
+            float: right;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: large;
+        }
+        #bankn {
+            margin-left: auto; 
+            margin-right: 30px;
+            float: right;
+            position: static;
+            visibility: hidden;
+            display: none;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: large;
+        }
+        #iban {
+            margin-left: auto; 
+            margin-right: 30px;
+            float: right;
+            position: static;
+            visibility: hidden;
+            display: none;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: large;
+        }
+        #accounts {
+            position: static;
+            visibility: hidden;
+            display: none;
+            font-size: larger;
+            font-family: 'Times New Roman', Times,  serif;
+        }
+        #home,#Tbtn{
+          background-color: #79b088; 
+            border: 1px solid black; 
+            color: black; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            font-size: larger;
+            font-family: 'Times New Roman', Times,  serif;
+        }
+        #noti {
+            position: absolute;
+            bottom: 0;
+            left: 400px;
+            right: 400px;
+            border: 1px solid black;
+            font-size: x-large;
+            width: 700px;
+            border-collapse: collapse;
+        }
+        th,td{
+          border:1px solid black;
+        }
+        textarea {
+            resize: none;
+            border: 1px solid #043c3c;
+            background-color: #ffffff;
+        }
+        #logo{
+            position: absolute;
+            z-index: -1;
+            left: 500px;
+            top: 160px;
+            opacity: 0.85;
+        }
+        #same,#domestic,#inter,#amount,#Tbtn {
+            margin-left: 30px; 
+            margin-right: auto;
+            float: left;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: large;
+        }
+        #response {
+          margin-left: 30px;
+          margin-right: auto;
+          float: left;
+          font-family: 'Times New Roman', Times, serif;
+          font-size: large;
+          bottom: 120px;
+          position: absolute;
+        }
+        button#Tbtn:hover{
+          background-color: #86c697;
+        }
+        button#home:hover{
+          background-color: #86c697;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <h1 align="center"> GUC BANK</h1>
+      </div> <br/>
+      <input type="radio" id="same" name="type" value="same">
+      <label for="same">internal transfer</label>
+      <textarea ID="acc" runat="server">Transfer To</textarea> <br>
+      <input type="radio" id="domestic" name="type" value="domestic">
+      <label for="domestic">domestic transfer</label><br>
+      <input type="radio" id="inter" name="type" value="inter">
+      <label for="inter">international transfer</label> <br>
+      <textarea ID="bankn" runat="server">Bank name</textarea> <br>
+    <textarea ID="amount" runat="server">transfer amount</textarea><br> <br>
+    <textarea ID="iban" runat="server">IBAN code</textarea> 
+    <select name="accounts" id="accounts" >
+        <option value="acc 1">account number: 0112345678</option>
+        <option value="acc 2">account number: 0112345679</option>
+    </select><br>
+    <button ID="Tbtn">Transfer</button><br> <br>
+    <button ID="home">Home</button><br>
+    <label ID="response"></label>
+    <table id="noti">
+        <tr>
+          <th>notifications</th>
+        </tr>
+        <tr>
+          <td>upcoming utilities payment in 29 may</td>
+        </tr>
+        <tr>
+          <td>new certificates of deposit with a 19% return</td>
+        </tr>
+        <tr>
+            <td>new car loans with low return, up to 3 years</td>
+          </tr>
+          <tr>
+            <td>the technical issue regarding the incorrect points balance is resolved</td>
+            </tr>
+      </table>
+      <img src="guc logo.png" id="logo">
+</body>
+<script>
+    const hbtn = document.getElementById("home");
+    const Tbtn = document.getElementById("Tbtn");
+    const amount = document.getElementById("amount");
+    const resp = document.getElementById("response");
+    const acc = document.getElementById("acc");
+    const iban = document.getElementById("iban");
+    const bn = document.getElementById("bankn");
+    const same = document.getElementById("same");
+    const domestic = document.getElementById("domestic");
+    const inter = document.getElementById("inter");
+    hbtn.addEventListener("click",function(e){
+    window.location.replace("ClientHome.html");
+    })
+    Tbtn.addEventListener("click",function(e){
+    if(amount.value == ''){
+        resp.textContent="please enter amount";
+    }
+    else if(!same.checked && !inter.checked && !domestic.checked){
+        resp.textContent="please choose a transfer type";
+    }
+    else {
+        resp.textContent="transfer sent";
+    }
+    })
+    acc.addEventListener("click",function(e){
+        acc.textContent="";
+    })
+    amount.addEventListener("click",function(e){
+        amount.textContent="";
+    })
+    iban.addEventListener("click",function(e){
+        iban.textContent="";
+    })
+    bn.addEventListener("click",function(e){
+        bn.textContent="";
+    })
+    same.addEventListener("click",function(e){
+    acc.style.visibility= "visible";
+    acc.style.display= "inline";
+    iban.style.visibility= "hidden";
+    iban.style.display= "none";
+    bn.style.visibility= "hidden";
+    bn.style.display= "none";
+    })
+    inter.addEventListener("click",function(e){
+    acc.style.visibility= "visible";
+    acc.style.display= "inline";
+    iban.style.visibility= "visible";
+    iban.style.display= "inline";
+    bn.style.visibility= "visible";
+    bn.style.display= "inline";
+    })
+    domestic.addEventListener("click",function(e){
+    acc.style.visibility= "visible";
+    acc.style.display= "inline";
+    iban.style.visibility= "hidden";
+    iban.style.display= "none";
+    bn.style.visibility= "visible";
+    bn.style.display= "inline";
+    })
+</script>
+</html>
